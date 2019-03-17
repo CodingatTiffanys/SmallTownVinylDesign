@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Small Town Vinyl Designs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="style.css">
+ <script src="script.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="images/smalltownvinyllogo2.png"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="photos.html">Feedback</a></li>
+        <li><a href="findus.html">Find Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron text-center">
+    <h1 class="lgHeader">Small Town Vinyl Design</h1> 
+    <p class="smHeader">Provide Customer Feedback!</p> 
+</div>
+<div class="text-center">
+      
+        <form method="POST" action="action_page.html">
+                <p>Comments & Feedback:</p>
+                <p><input id="feedback" style="min-height: 200px; width:830px; white-space: pre; border: 1px solid black;"></p>
+            
+<div id="drop_zone" style="min-height:100px; white-space: pre; border: 1px solid black;">Drop Photo Here:</div>
+<output id="list" ></output>
+
+      
+      <script>
+            function handleFileSelect(evt) {
+              evt.stopPropagation();
+              evt.preventDefault();
+          
+              var files = evt.dataTransfer.files; // FileList object.
+          
+              // files is a FileList of File objects. List some properties.
+              var output = [];
+              for (var i = 0, f; f = files[i]; i++) {
+                output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                            f.size, ' bytes, last modified: ',
+                            f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                            '</li>');
+              }
+              document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+            }
+          
+            function handleDragOver(evt) {
+              evt.stopPropagation();
+              evt.preventDefault();
+              evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+            }
+          
+            // Setup the dnd listeners.
+            var dropZone = document.getElementById('drop_zone');
+            dropZone.addEventListener('dragover', handleDragOver, false);
+            dropZone.addEventListener('drop', handleFileSelect, false);
+
+            // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+          </script>
+          
+
+<button input="submit" value="submit" style="width: 200px;" >Submit</button></form></div>
+
+
+<!--Footer-->
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Property of: Small Town Vinyl Design Co.</p>
+  <p>Mallard, Iowa.</p>
+  <p>Facebook Instagram Twitter</p>
+</footer>
+
+
+
+</body>
+</html>
